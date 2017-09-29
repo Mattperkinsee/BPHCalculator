@@ -1,8 +1,64 @@
 <html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+</head>
+
 <body>
- <form method="post" action="testDB.php">
-  <input type="text" name="yourfield">
-  <input type="submit" name="youraction" value="save">
- </form>
+
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-xs-12">
+                <form method="post" action="testDB.php">
+                    <div class="form-group">
+                      <br>
+                       <label for="formGroupExampleInput">Bills Done Last Night</label>
+                        
+                        <input type="text" class="form-control"  id="formGroupExampleInput" placeholder="Enter Here" name="yourfield">
+                        
+                        <input type="submit"  class="btn btn-success" name="youraction" value="Submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+         <div class="row text-center">
+            <div class="col-xs-12">
+                <form method="post" action="testDB.php">
+                    <div class="form-group">
+                      <br>
+                       <label for="formGroupExampleInput">Current Bills Left</label>
+                        
+                        <input type="text" class="form-control"  placeholder="Enter Here" name="yourfield">
+                        
+                        <input type="submit"  class="btn btn-success" name="youraction" value="Submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-xs-12">
+                <form method="post" action="testDB.php">
+                    <div class="form-group">
+                      <br>
+                       <label for="formGroupExampleInput">Current Total Bills Entered</label>
+                        
+                        <input type="text" class="form-control"  placeholder="Enter Here" name="yourfield">
+                        
+                        <input type="submit"  class="btn btn-success" name="youraction" value="Submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
 </body>
+<footer>
+
+
+</footer>
+
 </html>

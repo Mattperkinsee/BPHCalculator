@@ -38,7 +38,7 @@ $pdo_password='dbtest';
 try {
     // Establish connection to database
     $conn = new PDO($pdo_dsn, $pdo_user, $pdo_password);
-
+    $con=mysqli_connect("localhost","gearedwe_admin","dbtest","gearedwe_ODFLtest");
     // Throw exceptions in case of error.
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -48,6 +48,26 @@ try {
 
     // Execute the prepared statement using user supplied data.
     $qry->execute(Array(":yourvalue" => $yourfield));
+    
+   $result = mysqli_query($con,"SELECT * FROM yourtable");
+
+    echo "<table border='1'>
+    <tr>
+    <th>Total I Billed</th>
+    <th>Date</th>
+    </tr>";
+
+    while($row = mysqli_fetch_array($result))
+    {
+    echo "<tr>";
+    echo "<td>" . $row['yourcolumn'] . "</td>";
+    echo "<td>" . $row['yourcolumn'] . "</td>";
+    
+    echo "</tr>";
+    }
+    echo "</table>";
+
+    mysqli_close($con);
 
 } catch (PDOException $e) {
     echo 'Error: ' . $e->getMessage() . " file: " . $e->getFile() . " line: " . $e->getLine();
