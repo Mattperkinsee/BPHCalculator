@@ -2,12 +2,20 @@
 <html>
  <head>
   <title>Process and store</title>
+  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+
  </head>
 <body>
+<div class="container">
+        <div class="row text-center">
+            <div class="table col-xs-12">
 <?php
 
 // Check that user sent some data to begin with. 
-if (isset($_REQUEST['yourfield'])) {
+if (isset($_REQUEST['yourfield']) && isset($_REQUEST['hoursWorked'])) {
 
     /* Sanitize input. Trust *nothing* sent by the client.
      * When possible use whitelisting, only allow characters that you know
@@ -16,6 +24,7 @@ if (isset($_REQUEST['yourfield'])) {
      * For more details, see: https://stackoverflow.com/a/10094315
      */
     $yourfield=preg_replace('/[^a-zA-Z0-9\ ]/','',$_REQUEST['yourfield']);
+    $hoursWorked=$_REQUEST['hoursWorked'];
 
     /* Escape your input: use htmlspecialchars to avoid most obvious XSS attacks.
      * Note: Your application may still be vulnerable to XSS if you use $yourfield
@@ -23,6 +32,7 @@ if (isset($_REQUEST['yourfield'])) {
      * For more details, see: https://stackoverflow.com/a/130323
      */
     $yourfield=htmlspecialchars($yourfield);
+    $hoursWorked=htmlspecialchars($hoursWorked);
 
 
 } else {
@@ -46,7 +56,8 @@ try {
     // Use prepared statements to mitigate SQL injection attacks.
     // See https://stackoverflow.com/questions/60174/how-can-i-prevent-sql-injection-in-php for more details
     //$qry=$conn->prepare('INSERT INTO yourtable (yourcolumn) VALUES (:yourvalue)');
-    $qry=$conn->prepare("INSERT INTO `gearedwe_ODFLtest`.`yourtable` ( `yourcolumn`, `dateEntered`) VALUES ( :yourvalue, CURRENT_DATE());");
+    //  $qry=$conn->prepare("UPDATE yourtable SET BPH=billsEntered/hoursWorked");
+    $qry=$conn->prepare("INSERT INTO `gearedwe_ODFLtest`.`yourtable` ( `billsEntered`, `dateEntered`, `hoursWorked`, `BPH`) VALUES ( :yourvalue, CURRENT_DATE(), $hoursWorked, `billsEntered`/$hoursWorked);");
   
   
    
@@ -69,10 +80,10 @@ try {
     {
     echo "<tr>";
          echo "<td>" . $row['dateEntered'] . "</td>";
-    echo "<td>" . $row['yourcolumn'] . "</td>";
+    echo "<td>" . $row['billsEntered'] . "</td>";
    
-         echo "<td>" . $row['test'] . "</td>";
-          echo "<td>" . $row['test'] . "</td>";
+         echo "<td>" . $row['hoursWorked'] . "</td>";
+          echo "<td>" . $row['BPH'] . "</td>";
     
     echo "</tr>";
     }
@@ -85,22 +96,41 @@ try {
     exit;
 }
 ?>
+            </div>
+    </div>
+    </div>
 
 
-
+   <div class="container">
+        <div class="row text-center">
+            <div class="col-xs-12">
 <form method="post">
 
- <!-- Please note that the quotes around next block are important
-      to avoid XSS issues with poorly escaped user input. For more details:
-      https://stackoverflow.com/a/2894530
-  -->
+
   Bills Entered
- <input type="text" name="yourfield" value="<?php print $yourfied; ?>">
- <input type="submit" name="youraction" value="Submit">
+ <input type="number" step="any" name="yourfield" >
+
+    
+        
  <br>
  Hours Worked
- <input type="text" name="hoursWorked" value="<?php print $hoursWorked; ?>">
+ <input type="number" step="any" name="hoursWorked" >
  
+ <br>
+  <input type="submit" class="btn btn-success" name="youraction" value="Submit">
+ 
+ 
+
+</form>
+            </div>
+       </div>
+    </div>
+ <div class="container">
+        <div class="row text-center">
+            <div class="col-xs-12">
+            <form action='testDB.html' method="post">
+
+ <input type="submit" class="btn btn-primary" name="youraction" value="Back">
  <br>
  
  
@@ -109,8 +139,10 @@ try {
 </form>
  <form action='delete.php' method="post">
  <input type="hidden" name="name" value="">
-<input type="submit" name="submit" value="Delete Table">
+<input type="submit" class="btn btn-danger" name="submit" value="Delete Table">
 </form>  
-
+            </div>
+     </div>
+    </div>
 </body>
 </html>

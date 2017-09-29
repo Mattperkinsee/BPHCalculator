@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
  <head>
@@ -63,18 +64,18 @@ try {
 }
   
 
-   header( 'Location: http://www.gearedwebdesigns.com/testdb.php' ) ;
+ 
 
 
 ?>
-<form action='testDB.php' method="post">
+<form action='testDB.html' method="post">
 
  <!-- Please note that the quotes around next block are important
       to avoid XSS issues with poorly escaped user input. For more details:
       https://stackoverflow.com/a/2894530
   -->
- <input type="text" name="yourfield" value="<?php print $yourfield; ?>">
- <input type="submit" name="youraction" value="Add">
+
+ <input type="submit" class="btn btn-primary" name="youraction" value="Back">
  <br>
  
  
@@ -83,7 +84,7 @@ try {
 </form>
  <form action='delete.php' method="post">
  <input type="hidden" name="name" value="">
-<input type="submit" name="submit" value="Delete Table">
+<input type="submit" class="btn btn-danger" name="submit" value="Delete Table">
 </form>  
 
 </body>
