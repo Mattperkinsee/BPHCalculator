@@ -1,6 +1,18 @@
 .table {
     border-radius: 5px;
     width: 50%;
-    margin: 0px auto;
+    margin:0 auto;
+        padding: 10%;
     float: none;
+}
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+   
+}
+.g-signin2{
+  width: 100%;
+}
+
+.g-signin2 > div{
+  margin: 0 auto;
 }

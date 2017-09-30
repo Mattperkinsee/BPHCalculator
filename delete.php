@@ -1,4 +1,4 @@
-
+<?php header("Location: http://www.gearedwebdesigns.com/BPHCalcEnter.php");?>  
 <!doctype html>
 <html>
  <head>
