@@ -1,9 +1,12 @@
+
 <html>
 
 <head>
+   <meta http-equiv="refresh" content="30">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
      <meta name="google-signin-scope" content="profile email">
       <script src="/js/jquery.min.js"></script>
+      <script type="text/javascript" src="/js/googleJS.js" ></script>
     <script type="text/javascript" src="/js/jquery-migrate.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -37,10 +40,10 @@
 // Define MySQL connection and credentials
 $pdo_dsn='mysql:dbname=gearedwe_ODFLtest;host=localhost';
 $pdo_user='gearedwe_admin';     
-$pdo_password='dbtest'; 
+$pdo_password='dbtesters99'; 
 // Establish connection to database
     $conn = new PDO($pdo_dsn, $pdo_user, $pdo_password);
-    $con=mysqli_connect("localhost","gearedwe_admin","dbtest","gearedwe_ODFLtest");
+    $con=mysqli_connect("localhost","gearedwe_admin","dbtesters99","gearedwe_ODFLtest");
     
  
         //Display Table
@@ -136,26 +139,7 @@ $pdo_password='dbtest';
       <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>    
       
       <script>
-      function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log('Full Name: ' + profile.getName());
-        console.log('Given Name: ' + profile.getGivenName());
-        console.log('Family Name: ' + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
-        var userName = profile.getName(); 
-        
-        
-           document.getElementById("gName").innerHTML = profile.getName();
-          document.getElementById("gPic").src = profile.getImageUrl();
-       
-    
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
-      };
+   
           
           
           

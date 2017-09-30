@@ -9,18 +9,17 @@
 
 <?php
              
-
 // Define MySQL connection and credentials
 $pdo_dsn='mysql:dbname=gearedwe_ODFLtest;host=localhost';
 $pdo_user='gearedwe_admin';     
-$pdo_password='dbtest';  
+$pdo_password='dbtesters99';  
                 
 // Check that user sent some data to begin with. 
 if(!empty($_POST) && !empty($_REQUEST['yourfield'])&& isset($_REQUEST['hoursWorked']))   {          
 //if (isset($_REQUEST['yourfield']) && isset($_REQUEST['hoursWorked'])) {
  // Establish connection to database
     $conn = new PDO($pdo_dsn, $pdo_user, $pdo_password);
-    $con=mysqli_connect("localhost","gearedwe_admin","dbtest","gearedwe_ODFLtest");
+    $con=mysqli_connect("localhost","gearedwe_admin","dbtesters99","gearedwe_ODFLtest");
      
     // Throw exceptions in case of error.
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -71,48 +70,12 @@ if(!empty($_POST) && !empty($_REQUEST['yourfield'])&& isset($_REQUEST['hoursWork
 }
 }
 
-    
+  
     else {
    die('User did not send any data to be saved!');
 
     }
-
-/*
-
-try {
-    // Establish connection to database
-    $conn = new PDO($pdo_dsn, $pdo_user, $pdo_password);
-    $con=mysqli_connect("localhost","gearedwe_admin","dbtest","gearedwe_ODFLtest");
-     
-    // Throw exceptions in case of error.
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // Use prepared statements to mitigate SQL injection attacks.
-    // See https://stackoverflow.com/questions/60174/how-can-i-prevent-sql-injection-in-php for more details
-    //$qry=$conn->prepare('INSERT INTO yourtable (yourcolumn) VALUES (:yourvalue)');
-    //  $qry=$conn->prepare("UPDATE yourtable SET BPH=billsEntered/hoursWorked");
-   // $qry=$conn->prepare("INSERT INTO `gearedwe_ODFLtest`.`yourtable` ( `billsEntered`, `dateEntered`, `hoursWorked`, `BPH`) VALUES ( :yourvalue, CURRENT_DATE(), $hoursWorked, `billsEntered`/$hoursWorked);");
-  
-  
-   
-    // Execute the prepared statement using user supplied data.
-    //$qry->execute(Array(":yourvalue" => $yourfield));
-    
-   
-
-    mysqli_close($con);
-
-} catch (PDOException $e) {
-    echo 'Error: ' . $e->getMessage() . " file: " . $e->getFile() . " line: " . $e->getLine();
-    exit;
-}
-    }
-    */
-
 ?>
-          
-
-
-   
+ 
 </body>
 </html>

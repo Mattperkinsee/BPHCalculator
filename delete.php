@@ -12,12 +12,12 @@
 // Define MySQL connection and credentials
 $pdo_dsn='mysql:dbname=gearedwe_ODFLtest;host=localhost';
 $pdo_user='gearedwe_admin';     
-$pdo_password='dbtest';  
+$pdo_password='dbtesters99';  
 
 try {
     // Establish connection to database
     $conn = new PDO($pdo_dsn, $pdo_user, $pdo_password);
-    $con=mysqli_connect("localhost","gearedwe_admin","dbtest","gearedwe_ODFLtest");
+    $con=mysqli_connect("localhost","gearedwe_admin","dbtesters99","gearedwe_ODFLtest");
      
     // Throw exceptions in case of error.
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
