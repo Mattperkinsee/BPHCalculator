@@ -2,7 +2,9 @@
 <html>
 
 <head>
-   <meta http-equiv="refresh" content="30">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
      <meta name="google-signin-scope" content="profile email">
       <script src="/js/jquery.min.js"></script>
@@ -12,7 +14,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css?ver2.1">
     <script src="https://apis.google.com/js/platform.js" async defer></script>  
-   
     <meta name="google-signin-client_id" content="361221640104-i8gqro3o49s7br12jgd96sbhas9mcrao.apps.googleusercontent.com">
 </head>
            
