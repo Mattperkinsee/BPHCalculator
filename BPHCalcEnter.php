@@ -3,8 +3,8 @@
 
 <head>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
      <meta name="google-signin-scope" content="profile email">
       <script src="/js/jquery.min.js"></script>
@@ -16,6 +16,9 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>  
     <meta name="google-signin-client_id" content="361221640104-i8gqro3o49s7br12jgd96sbhas9mcrao.apps.googleusercontent.com">
 </head>
+ 
+      
+          <textarea id="source1" name="source1" rows="5" cols="20"></textarea>
            
             <div class="container">
             <div class="row text-center">
@@ -35,7 +38,7 @@
              </div>
              <div class="col-xs-12 col-sm-4">
            
-        <div class="row text-center">
+        <div class="row text-center gID">
 <?php
 
 // Define MySQL connection and credentials
@@ -44,33 +47,34 @@ $pdo_user='gearedwe_admin';
 $pdo_password='dbtesters99'; 
 // Establish connection to database
     $conn = new PDO($pdo_dsn, $pdo_user, $pdo_password);
-    $con=mysqli_connect("localhost","gearedwe_admin","dbtesters99","gearedwe_ODFLtest");
-    
- 
-        //Display Table
+    $con=mysqli_connect("localhost",$pdo_user,$pdo_password,"gearedwe_ODFLtest");
+   //  $gID = $_POST['lastName'];
+            
+   $myVar = $_POST['lastName'];
+    //   json_decode($data);
+echo "var myVar = foo($myVar);";
+    //Display Table
    $result = mysqli_query($con,"SELECT * FROM yourtable");
 
     echo "<table border='1'>
     <tr>
+    <th>gID</th>
     <th>Date</th>
-    <th>Total Billed</th>
-    
-    <th>Hours Worked</th>
+    <th>Total Billed</th>    <th>Hours Worked</th>
      <th>BPH</th>
     </tr>";
 
     while($row = mysqli_fetch_array($result))
     {
-    echo "<tr>";
-         echo "<td>" . $row['dateEntered'] . "</td>";
-    echo "<td>" . $row['billsEntered'] . "</td>";
-   
-         echo "<td>" . $row['hoursWorked'] . "</td>";
-          echo "<td>" . $row['BPH'] . "</td>";
-    
-    echo "</tr>";
+        echo "<tr>";
+        echo "<td>" . $row['gID'] . "</td>";
+        echo "<td>" . $row['dateEntered'] . "</td>";
+        echo "<td>" . $row['billsEntered'] . "</td>";
+        echo "<td>" . $row['hoursWorked'] . "</td>";
+        echo "<td>" . $row['BPH'] . "</td>";
+        echo "</tr>";
     }
-    echo "</table>";
+        echo "</table>";
 
     
     mysqli_close($con);
@@ -114,6 +118,8 @@ $pdo_password='dbtesters99';
                        <label for="formGroupExampleInput">Hours Worked</label>
                         
                         <input type="number" step="any" class="form-control"  placeholder="..." name="hoursWorked">
+                        
+                     <input type="hidden" id="source3" value="so" name="user_id" />
                         <br><br>
                         <input type="submit"  class="btn btn-success" name="youraction" value="Submit">
                     </div>
@@ -137,18 +143,13 @@ $pdo_password='dbtesters99';
     
     <div class="row text-center">
             <div class="col-xs-12">   
+
       <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>    
-      
-      <script>
-   
-          
-          
-          
-    </script>
       <br>
-       <a href="#" onclick="signOut();">Sign out</a>
-       
+
+       <a href="#" onclick="signOut();">Sign out</a>  
 <script>
+    
   function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
@@ -157,6 +158,7 @@ $pdo_password='dbtesters99';
     });
   }
 </script>
+
         </div>
     </div>
      
